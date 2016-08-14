@@ -14,37 +14,25 @@
  *
  *             Errors:
  *
- *             EAGAIN:
- *
- *             fork() cannot allocate sufficient memory to copy the parent's
- *             page tables and allocate a task structure for the child.
- *
- *             EAGAIN:
- *
- *             It was not possible to create a new process because the caller's
- *             RLIMIT_NPROC resource limit was encountered. To exceed this
- *             limit, the process must have either the CAP_SYS_ADMIN or the
+ *             EAGAIN: It was not possible to create a new process because the
+ *             caller's RLIMIT_NPROC resource limit was encountered. To exceed
+ *             this limit, the process must have either the CAP_SYS_ADMIN or the
  *             CAP_SYS_RESOURCE capability.
  *
- *             ENOMEM:
+ *             ENOMEM: fork() failed to allocate the necessary kernel structures
+ *             because memory is tight.
  *
- *             fork() failed to allocate the necessary kernel structures because
- *             memory is tight.
+ *             ENOSYS: fork() is not supported on this platform (for example,
+ *             hardware without a Memory-Management Unit).
  *
- *             ENOSYS:
- *
- *             fork() is not supported on this platform (for example, hardware
- *             without a Memory-Management Unit).
- *
- *             ERESTARTNOINTR (since Linux 2.6.17):
- *
- *             System call was interrupted by a signal and will be restarted.
- *             (This can be seen only during a trace.)
+ *             ERESTARTNOINTR (since Linux 2.6.17): System call was interrupted
+ *             by a signal and will be restarted. (This can be seen only during
+ *             a trace.)
  *
  *
  * @return     The return value is zero in the child and the process-id number
- *             of the child in  the parent,  or  -1  upon error. In the
- *             lattercase, ERRNO indicates the problem.
+ *             of the child in  the parent,  or  -1  upon error. In the latter
+ *             case, ERRNO indicates the problem.
  */
 
 /**
@@ -72,37 +60,37 @@
 /**
  * @brief      waitpid: wait for a child process to stop or terminate
  *
- *             The wait() and waitpid() functions shall obtain status
- *             information pertaining  to one of the caller's child processes.
- *             Various options permit status information to be obtained for
- *             child processes that have  terminated  or  stopped.  If status
- *             information is available for two or more child processes, the
- *             order in which their status is reported is unspecified.
+ *             The waitpid() function shall obtain status information pertaining
+ *             to one of the caller's child processes. Various options permit
+ *             status information to be obtained for child processes that have
+ *             terminated or stopped. If status information is available for two
+ *             or more child processes, the order in which their status is
+ *             reported is unspecified.
  *
  *             Signature: pid_t waitpid(pid_t pid, int *wstatus, int options);
  *
- *             The waitpid() system call suspends execution  of  the  calling
+ *             The waitpid() system call suspends execution of the calling
  *             process until a child specified by pid argument has changed
- *             state.  By default, waitpid() waits only for terminated children,
+ *             state. By default, waitpid() waits only for terminated children,
  *             but this behavior is modifiable via the options argument, as
  *             described below.
  *
  *             The value of pid can be:
  *
- *             < -1   meaning  wait for  any  child process whose process group
- *             ID is equal to the absolute value of pid.
+ *             < -1   meaning wait for any child process whose process group ID
+ *             is equal to the absolute value of pid.
  *
  *             -1     meaning wait for any child process.
  *
- *             0      meaning wait for any child process whose  process  group
- *             ID  is equal to that of the calling process.
+ *             0      meaning wait for any child process whose process group ID
+ *             is equal to that of the calling process.
  *
- *             > 0    meaning  wait for the child whose process ID is equal to
+ *             > 0    meaning wait for the child whose process ID is equal to
  *             the value of pid.
  *
  *
- *             The value of options is an OR of zero or more of the following
- *             constants:
+ *             The value of options is a bitwise OR of zero or more of the
+ *             following constants:
  *
  *             WNOHANG: return immediately if no child has exited.
  *
@@ -124,7 +112,7 @@
  *             returning from main().
  *
  *             WEXITSTATUS(wstatus): returns the exit status of the child. This
- *             consists  of  the least  significant 8 bits of the wstatus
+ *             consists  of  the least significant 8 bits of the wstatus
  *             argument that the child specified in a call to exit(3) or
  *             _exit(2) or as the argument for a return statement in main().
  *             This macro should be employed only if WIFEXITED returned true.
@@ -137,13 +125,13 @@
  *             only if WIFSIGNALED returned true.
  *
  *             WCOREDUMP(wstatus): returns true if the child produced a core
- *             dump. This  macro should  be  employed  only if  WIFSIGNALED
- *             returned true.  This macro is not specified in POSIX.1-2001 and
- *             is not  available  on some  UNIX  implementations (e.g.,  AIX,
- *             SunOS).  Only use this enclosed in #ifdef WCOREDUMP ... #endif.
+ *             dump. This macro should be employed only if  WIFSIGNALED returned
+ *             true. This macro is not specified in POSIX.1-2001 and is not
+ *             available on some UNIX implementations (e.g., AIX, SunOS). Only
+ *             use this enclosed in #ifdef WCOREDUMP ... #endif.
  *
  *             WIFSTOPPED(wstatus): returns true if the child process was
- *             stopped by delivery of a signal; this  is  possible only if the
+ *             stopped by delivery of a signal; this is possible only if the
  *             call was done using WUNTRACED or when the child is being traced
  *             (see ptrace(2)).
  *
@@ -151,7 +139,7 @@
  *             the child to stop.This macro should be employed only if
  *             WIFSTOPPED returned true.
  *
- *             WIFCONTINUED(wstatus): (since  Linux 2.6.10) returns true if the
+ *             WIFCONTINUED(wstatus): (since Linux 2.6.10) returns true if the
  *             child process was resumed by delivery of SIGCONT.
  *
  *             Errors:
@@ -165,7 +153,7 @@
  *             EINVAL: The options argument was invalid.
  *
  *
- * @return     on success, returns the process ID of the child whose state has
+ * @return     On success, returns the process ID of the child whose state has
  *             changed; if WNOHANG was specified and one or more child(ren)
  *             specified by pid exist, but have not yet changed state, then 0 is
  *             returned. On error, -1 is returned and ERRNO indicates the
@@ -211,10 +199,10 @@ int main () {
 
     /* if this is the parent-process then */
     cout << "Parent process " << parent << ": Waiting children to exit" << endl;
-    // int errno, status, sum = 0;
-    int errno, status, sum = 0;
-    /* Parent-process waits for all children to exit, adding each status to the sum variable */
 
+    int errno, status, sum = 0;
+
+    /* Parent-process waits for all children to exit, adding each status to the sum variable */
     for (int i = 0; i < NPROCESS; ++i) {
         waitpid(-1, &status, 0);
 
@@ -242,15 +230,13 @@ int main () {
        todos os processos chegaremos a 5.
 
     2) Não, porque condição de corrida só ocorre quando existe
-       memória compartilhada, como este aplicativo usa apenas
-       processos (que não compartilham memória), não há possibilidade de
-       condição de corrida.
+       memória compartilhada, como este aplicativo não compartilha
+       memória, não há possibilidade de condição de corrida.
 
     3) Serão endereços iguais, pois correspondem a um endereço virtual
        contido em uma página do processo que foi copiada pelo sistema
        operacional quando a chamada de sistema fork foi acionada.
        Note que por mais que os endereços virtuais sejam iguais eles
        correspondem a endereços físicos diferentes.
-
     */
 }
