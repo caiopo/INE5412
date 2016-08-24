@@ -1,0 +1,74 @@
+1. Prover abstrações para os programas aplicativos não precisarem lidar com o baixo nível do hardware e administrar o hardware.
+
+2.
+
+3. Multiprogramação = ter mais de um programa carregado na memória
+Timesharing = troca de contexto rápida o suficiente para dar uma ilusão de paralelismo entre vários processos
+
+4. Explorar a localidade espacial, que diz que se um endereço foi acessado, os endereços vizinhos tem maior chance de serem acessados em breve
+
+5. Grande parte do tempo de CPU era usado preso a controle de dispositivos de E/S.
+
+6. Para que um programa aplicativo não possa controlar o dispositivo de E/S de forma maliciosa ou ingênua, podendo por exemplo, formatar o disco rígido.
+
+7. Sobrevive, exemplo: i3, i5, i7 da Intel. (?)
+
+8.
+
+9.
+
+10. Tendo dois modos de execução, é possível proteger algumas operações para que apenas o sistema operacional possa utilizar (instruções privilegiadas), facilitando alguns aspectos de proteção do processador.
+
+11.
+
+12. A, D
+
+13. 20 msec
+
+14. 10^9
+
+15. RAM_Time = (99 * 10 nsec + 1 * 10 ms)/100 = 100009.9 ns
+    Avg_Time = (95 * 1 nsec + 5 * RAM_Time)/100 = 5001.445 ns
+
+16. Não, dependendo do sistema operacional é possivel agendar os dados para a escrita em disco (mantendo eles temporariamente em RAM) e escrever quando possível. Deste modo não é preciso bloquear o processo que fez a chamada de sistema para escrever no disco.
+
+17.
+
+18. A process table é sempre necessária, porque como o SO está executando mais de um processo de forma concorrente, ele precisa guardar as informações de cada processo (como contexto, pid, dono, pai, localização do código na memória).
+
+19.
+
+20. fork: falta de memória
+    exec e unlink: arquivo inexistente
+
+21. Tempo: CPU, impressora, placa de rede (?)
+    Espaço: RAM e disco rígido
+    Ambos: Teclado e display
+
+22. Sim, em caso de sucesso o valor retornado é o número de bytes escritos e nunca será maior que count. Em caso de falha o retorno é -1.
+
+23.
+
+24.
+
+27. Segurança, porque não permite que processos acessem áreas de memória que não são suas.
+    Permite que a memória alocada seja maior que a RAM disponível, porque é possível guardar dados que não estão sendo usados no armazenamento secundário (geralmente um disco rígido).
+
+28.
+
+29. Uma problema possível é o programador utilizar uma chamada de sistema UNIX que não possui equivalente em Win32.
+
+30. Porque o binário será incompatível com ISAs diferentes da qual ele foi compilado. Mesmo recompilando, ainda existem partes do SO que devem ser escritas em linguagem de montagem, como por exemplo: a troca de contexto e o tratador de interrupções, porque lidam diretamente com os registradores do processador.
+
+31.
+
+32. Perda de desempenho.
+
+33.
+
+34.
+
+35.
+
+36.
+
