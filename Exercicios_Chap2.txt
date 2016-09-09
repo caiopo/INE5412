@@ -1,0 +1,83 @@
+2. Apenas uma coincidência, pois o programa começa na posição de memória 16384 e tem tamanho 16384, se extendendo até a posição 32768
+
+3. 10.7 s
+
+4.
+a) 12 MB
+FF: 20, 18, 12, 15, swap
+BF: 12, 15, 18, 20, swap
+WF: 20, 18, 15, 12, swap
+NF: 20, 18, 12, 15, swap
+
+b) 10 MB
+FF: 10, 20, 20, 18, 12, 15, swap
+BF: 10, 12, 15, 18, 20, 20, swap
+WF: 20, 18, 15, 12, 10, 20, swap
+NF: 10, 20, 20, 18, 12, 15, swap
+
+c) 9 MB
+FF: 10, 20, 20, 18, 18, 9, 12, 15, swap
+BF: 9, 10, 12, 15, 18, 18, 20, 20, swap
+WF: 20, 18, 15, 12, 10, 20, 18, 9, swap
+NF: 10, 20, 20, 18, 18, 9, 12, 15, swap
+
+5.
+Physical address: endereço que corresponde a uma posição da memória física, calculado a partir do endereço virtual pela MMU em sistemas que possuem proteção de memória
+
+Virtual address: endereço usado pelos processos para acessar a memória, transformados em endereços físicos pela MMU ao acessar a memória
+
+Note que dois processos podem ter dados em endereços virtuais iguais, mas estes endereços ao serem traduzidos em endereços físicos serão diferentes.
+
+6.
+a)
+4k:
+PN: b10
+Offset: b011100010000
+
+8k:
+PN: b1
+Offset: b0011100010000
+
+b)
+4k:
+PN: b100
+Offset: 0
+
+8k:
+PN: b10
+Offset: 0
+
+c)
+4k:
+PN: b111
+Offset: b010100110000
+
+8k:
+PN: b11
+Offset: b1010100110000
+
+7.
+
+9. TLB
+
+11.
+
+13.
+m = num_instr
+
+(m/k * n + m)/m
+
+14.
+2**19*100
+
+131.072
+
+15.
+
+16.
+
+17.
+
+21.
+
+22.

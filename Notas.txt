@@ -1,0 +1,12 @@
+Reunião 09/09/2016
+
+- Requisitos:
+    - Coordenadas?
+    - Controle dos Motores de Passo?
+    - Angulação do Motor?
+    - Interface de rádio?
+    - Memória?
+
+- Desenvolvimento:
+    - Fases de Desenvolvimento do SC?
+    - Testes parciais?
