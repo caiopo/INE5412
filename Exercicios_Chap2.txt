@@ -57,15 +57,28 @@ PN: b11
 Offset: b1010100110000
 
 7.
+a) 20
+8212
 
-9. TLB
+b) 4100
+4100
+
+c) 8300
+24684
+
+9. MMU
 
 11.
+a)
+M = 4096
+N > M
+
+b)
+N > 64 * 1024
+Se o loop for repetido, N deve ser suficientemente grande para X ocupar mais de 64 páginas, fazendo com que cada acesso a X[i] cause um miss na TLB.
 
 13.
-m = num_instr
-
-(m/k * n + m)/m
+n/k + 1
 
 14.
 2**19*100
