@@ -86,11 +86,31 @@ n/k + 1
 131.072
 
 15.
+a) 2^20 entradas.
+
+b) Bastante, pois todos os bytes da página serão acessados, então a TLB será bastante usada.
 
 16.
+99   -> 1 ns
+0.99 -> 100 ns
+0.01 -> 6000 ns
+
+2.58 ns
 
 17.
+a) A tabela de páginas é menor.
+
+b)
 
 21.
 
+1020
+6144
+1024
+8192
+1028
+8196
+5120
+
 22.
+25%
